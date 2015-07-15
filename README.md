@@ -1,4 +1,10 @@
-# pcf-twitterbot - A Pivotal Cloud Foundry Twitterbot and D3 Bubble Chart Visualization
+PCF-TwitterBot
+=========
+
+## A Pivotal Cloud Foundry Twitterbot and D3 Bubble Chart Visualization
+
+[![Twitter Bot Viz](https://github.com/bbertka/pcf-twitterbot/static/img/screenshot.png)](#)
+
 
 To run, first vendor dependencies as found in requirements.txt:
 
