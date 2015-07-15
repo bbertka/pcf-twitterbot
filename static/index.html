@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html style="height: 685px">
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+body {
+  font: 19px sans-serif;
+  text-rendering: optimizelegibility;
+}
+.logo{
+        //background: url("img/logo.png") no-repeat center bottom;
+	height: 50px;
+}
+.arc path {
+    stroke: #fff;
+}
+.aggbar {
+  margin-left: 10px;
+  font: 10px sans-serif;
+  shape-rendering: crispEdges;
+}
+.aggbar rect {
+  stroke: white;
+  fill: steelblue;
+}
+.aggbar text.bar {
+  fill: white;
+}
+</style>
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row-fluid">
+     <!--  <div class="span7"> -->
+    <div>
+      <p id="bubbles" style="padding-left: 30px; font-size: 16px;"></p>
+    </div>
+	<div class='logo'></div>
+</div>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/d3.v3.min.js"></script>
+<script src="js/fvc.js"></script>
+<script src="js/aggcount.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+	var bubblechart = fvcBubbleChart().diameter(625);
+	function redraw() {
+		d3.json("/metrics/field-value-counters/hashtags")
+		.get(function(error, json) {
+			if( error ){ 
+				return console.warn(error); 
+			}
+			var data = d3.entries(json.counts);
+			data.sort(function(a,b) { 
+				return b.value - a.value; 
+			});
+        		data.splice(500);
+        		d3.select("#bubbles")
+				.datum(data)
+				.call(bubblechart);
+		});
+	}
+	redraw.call();
+	setInterval(redraw, 2000);
+</script>
+</body>
+</html>

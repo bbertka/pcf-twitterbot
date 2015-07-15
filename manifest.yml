@@ -1,0 +1,13 @@
+applications:
+- name: pybot
+  buildpack: https://github.com/cloudfoundry/python-buildpack
+  memory: 256M
+  stack: cflinuxfs2
+  instances: 1
+  env:
+    APP_KEY: your-key
+    APP_SECRET: your-app-secret
+    OAUTH_TOKEN: your-oauth-token
+    OAUTH_TOKEN_SECRET: your-oauth-token-secret
+    MAX_CHART_SIZE: 250
+    INCLUDE_TWITTER_HASH: bigdata, devops, docker, cloud

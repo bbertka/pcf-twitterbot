@@ -1,0 +1,4 @@
+git+git://github.com/bbertka/python-cfworker.git
+requests==2.5.1
+Flask
+twython
